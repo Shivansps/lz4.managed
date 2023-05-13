@@ -1,3 +1,60 @@
+LZ4 for .NET 6 with basic random access support 
+=======================
+This is the original LZ4 for C# full managed lib written by IonKiwi, 
+with some minor changes to add random access support based on the original
+lz4 dictionaryRandomAccess.c example with the difference that a dictionary is not used 
+and some additional data added to the end of the file.
+
+How to use
+----------------------------
+**Compress using the LZ41 format**
+
+```csharp
+	using IonKiwi.lz4;
+	
+	var file_in = new FileStream("G:\\test.json", FileMode.Open, FileAccess.Read);
+	var file_out = new FileStream("G:\\test.json.lz4", FileMode.OpenOrCreate, FileAccess.Write, FileShare.None);
+	Console.WriteLine("Uncompressed Filesize: " + file_in.Length);
+	var cpBytes = LZ4RawUtility.LZ41_Stream_Compress_HC(file_in, file_out, LZ4FrameBlockSize.Max64KB);
+	Console.WriteLine("Compressed Filesize: " + cpBytes);
+	file_in.Dispose();
+	file_out.Dispose();
+``` 
+
+**Decompress entire file with LZ41 format**
+
+```csharp
+	using IonKiwi.lz4;
+	
+	var file_in = new FileStream("G:\\test.json.lz4", FileMode.Open, FileAccess.Read);
+	var file_out = new FileStream("G:\\test2.json", FileMode.OpenOrCreate, FileAccess.Write, FileShare.None);
+
+	Console.WriteLine("Compressed Filesize: " + file_in.Length);
+	var cpBytes = LZ4RawUtility.LZ41_Stream_Decompress(file_in, file_out);
+	Console.WriteLine("Uncompressed bytes: " + cpBytes);
+	Console.WriteLine(i);
+	file_in.Dispose();
+	file_out.Dispose();
+``` 
+
+**Random Access with LZ41 format**
+
+```csharp
+	using IonKiwi.lz4;
+	
+	var file_in = new FileStream("G:\\test.json.lz4", FileMode.Open, FileAccess.Read);
+	var file_out = new FileStream("G:\\test2.json", FileMode.OpenOrCreate, FileAccess.Write, FileShare.None);
+
+	Console.WriteLine("Compressed Filesize: " + file_in.Length);
+	//Get 100 bytes starting at position 2000 of the uncompressed file
+	var cpBytes = LZ4RawUtility.LZ41_Stream_Decompress(file_in, file_out,null,2000,100);
+	Console.WriteLine("Uncompressed bytes: " + cpBytes);
+	Console.WriteLine(i);
+	file_in.Dispose();
+	file_out.Dispose();
+``` 
+
+**Original Readme**
 LZ4 for .NET (original C sources translated to C#)
 =======================
 

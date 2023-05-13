@@ -484,7 +484,7 @@ namespace IonKiwi.lz4 {
 			return (LZ4_stream*)buffer;
 		}
 
-		private static unsafe void LZ4_resetStream(LZ4_stream* LZ4_stream) {
+		internal static unsafe void LZ4_resetStream(LZ4_stream* LZ4_stream) {
 			Unsafe.InitBlock(LZ4_stream, 0, (uint)sizeof(LZ4_stream)); // MEM_INIT(LZ4_stream, 0, sizeof(LZ4_stream_t_internal));
 		}
 
@@ -2301,7 +2301,7 @@ namespace IonKiwi.lz4 {
 			LZ4_streamHCPtr->internal_donotuse.compressionLevel = (short)compressionLevel;
 		}
 
-		private static unsafe LZ4_streamHC* LZ4_initStreamHC(void* buffer, int size) {
+		internal static unsafe LZ4_streamHC* LZ4_initStreamHC(void* buffer, int size) {
 			LZ4_streamHC* LZ4_streamHCPtr = (LZ4_streamHC*)buffer;
 			//DEBUGLOG(4, "LZ4_initStreamHC(%p, %u)", buffer, (uint)size);
 			/* check conditions */
@@ -4432,7 +4432,7 @@ namespace IonKiwi.lz4 {
 			return LZ4_compress_HC_extStateHC_fastReset(state, src, dst, srcSize, dstCapacity, compressionLevel);
 		}
 
-		private static unsafe void LZ4_resetStreamHC_fast(LZ4_streamHC* LZ4_streamHCPtr, int compressionLevel) {
+		internal static unsafe void LZ4_resetStreamHC_fast(LZ4_streamHC* LZ4_streamHCPtr, int compressionLevel) {
 			//DEBUGLOG(4, "LZ4_resetStreamHC_fast(%p, %d)", LZ4_streamHCPtr, compressionLevel);
 			if (LZ4_streamHCPtr->internal_donotuse.dirty != 0) {
 				LZ4_initStreamHC(LZ4_streamHCPtr, sizeof(LZ4_streamHC));

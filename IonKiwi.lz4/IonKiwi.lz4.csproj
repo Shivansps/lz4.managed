@@ -1,9 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.0;netstandard2.1;net60</TargetFrameworks>
+		<TargetFrameworks>net60</TargetFrameworks>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageId>IonKiwi.lz4.managed</PackageId>
 		<Version>1.0.7</Version>
 		<Authors>Ewout van der Linden</Authors>
@@ -25,7 +24,7 @@ The implementation is compliant with the LZ4 Frame Format (v1.6.2).</Description
 		<RepositoryUrl>https://github.com/IonKiwi/lz4.managed</RepositoryUrl>
 		<PackageLicenseExpression>BSD-2-Clause</PackageLicenseExpression>
 		<AssemblyVersion>1.0.0.0</AssemblyVersion>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -49,10 +48,6 @@ The implementation is compliant with the LZ4 Frame Format (v1.6.2).</Description
 	    <Pack>True</Pack>
 	    <PackagePath>\</PackagePath>
 	  </None>
-	</ItemGroup>
-
-	<ItemGroup>
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
 	</ItemGroup>
 
 	<PropertyGroup>
