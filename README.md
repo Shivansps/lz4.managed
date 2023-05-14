@@ -54,6 +54,12 @@ How to use
 	file_out.Dispose();
 ``` 
 
+**LZ41 Format**
+HEADER|BLOCKS|OFFSET INDEX|NUMBER OF OFFSETS|ORIGINAL FILESIZE|BLOCK SIZE
+(4)   |  (N) |     (N)	  |       4         |       4         |     4
+
+The Header is LZ41(0x31345A4C)
+
 **Original Readme**
 LZ4 for .NET (original C sources translated to C#)
 =======================
