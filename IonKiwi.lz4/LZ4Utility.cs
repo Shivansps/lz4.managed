@@ -32,9 +32,7 @@
 */
 
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace IonKiwi.lz4 {
 	public static class LZ4Utility {
@@ -94,7 +92,7 @@ namespace IonKiwi.lz4 {
 					lz4.Write(input, inputOffset, inputLength);
 				}
 				return ms.ToArray();
-			}
-		}
+            }
+        }
 	}
 }
